@@ -3,6 +3,7 @@ package com.nttdata.bootcamp.RetoProgrFuncional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,7 @@ public class RetoProgrFuncionalApplication {
 	static Usuario user1 = new Usuario ("Maria","12-04-2001","maria@gmail.com","femenino");
 	static Usuario user2 = new Usuario ("Pedro","28-09-1978","pedro@gmail.com","masculino");
 	static Usuario user3 = new Usuario ("Anselmo","23-06-2005","anselmo@gmail.com","masculino");
-	static List<Usuario> listaUser = new ArrayList<>(Arrays.asList(user1,user2,user3));
+	static List<Usuario> listaUsuarios = new ArrayList<>(Arrays.asList(user1,user2,user3));
 	
 	static List<String> ciudades = new ArrayList<>(Arrays.asList("Sevilla","Malaga","Gerona","Granada","Madrid","Murcia"));
 	
@@ -26,6 +27,7 @@ public class RetoProgrFuncionalApplication {
 		SpringApplication.run(RetoProgrFuncionalApplication.class, args);
 		System.out.println(filtraCiudad());
 		System.out.println(sumaImpar());
+		
 	}
 	
 	public static List<String> filtraCiudad() {
@@ -36,10 +38,11 @@ public class RetoProgrFuncionalApplication {
 		return numeros.stream().filter(x ->x%2==1).collect(Collectors.summingInt(Integer::intValue));
 	}
 	
-	public static String obtieneGmail() {
-		return null;
+	public static List<Usuario> obtieneGmail() {
+		return listaUsuarios.stream().filter((x) -> x.getGmail()).collect(Collectors.toList());
 		
 	}
+
 
 
 }

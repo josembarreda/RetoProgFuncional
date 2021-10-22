@@ -13,6 +13,10 @@ public class Usuario {
 		this.gmail=gmail;
 		this.sexo=sexo;
 	}
+	@Override
+	public String toString() {
+		return "Usuario [nombre=" + nombre + ", fechaNac=" + fechaNac + ", gmail=" + gmail + ", sexo=" + sexo + "]";
+	}
 	public String getNombre() {
 		return nombre;
 	}
