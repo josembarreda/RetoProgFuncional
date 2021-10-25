@@ -3,7 +3,6 @@ package com.nttdata.bootcamp.RetoProgrFuncional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.springframework.boot.SpringApplication;
@@ -23,24 +22,34 @@ public class RetoProgrFuncionalApplication {
 	
 	static List<Integer> numeros = new ArrayList<>(Arrays.asList(33,67,58,2,44,13));
 	
+	static List<String> frase= new ArrayList<String>(Arrays.asList("Hola ",", estoy ","concatenando ","palabras con ","reduce"));
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RetoProgrFuncionalApplication.class, args);
 		System.out.println(filtraCiudad());
 		System.out.println(sumaImpar());
+		System.out.println(concatenar());
 		
 	}
 	
+	//Filtra por ciudades que comienzan por M y las mete en otra lista
 	public static List<String> filtraCiudad() {
 		return ciudades.stream().filter(x ->x.startsWith("M")).collect(Collectors.toList());
 	}
 	
+	//Suma los numeros impares de una lista
 	public static int sumaImpar() {
 		return numeros.stream().filter(x ->x%2==1).collect(Collectors.summingInt(Integer::intValue));
 	}
-	
+	/*
 	public static List<Usuario> obtieneGmail() {
 		return listaUsuarios.stream().filter((x) -> x.getGmail()).collect(Collectors.toList());
 		
+	}*/
+	
+	//Concatena elementos de una lista para formar una frase
+	public static String concatenar() {
+		return frase.stream().reduce(String::concat).toString();
 	}
 
 
